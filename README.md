@@ -7,8 +7,6 @@ Pandora Box enables analysts and data scientists to discover the predictive pote
 
 Pandora does quick feasibility analysis of the problems you want to predictively model in the industry (quality prediction, virtual sensors, etc).
 
-![IHM Pandora](/images/IHM%20Pandora02.png)
-
 Sientia Predictive Power Evaluator (**SPPE**) can be used to analyze correlations between process variables and quality (linear and non-linear correlation), do hypothesis testing (check causality), calculate lag time, synchronize variables in time, and provide information on the predictive potential of the problem.
 
 ### Why Sientia Predictive Power Analysis?
@@ -95,12 +93,11 @@ streamlit run sppe_app.py
 
 Open an issue
 
-
 ### Support or contact
 
 Send an e-mail to alexandre@aignosi.com
 
-### SPPED for enterprises or cloud provisioning 
+### SPPE for enterprises or cloud provisioning
 
 Want to share your findings, export datasets, and assess the predictive potential of a large-scale problem?
 
