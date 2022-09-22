@@ -1,119 +1,111 @@
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/ihmstefanini/pandorabox/streamlitcloudversion/pandora_app.py)
 
 # Welcom to Sientia Predictive Power Evaluator 👋
 
-```
-** The fastest way to assess the predictive potential of a data problem in the industry**
+**The fastest way to assess the predictive potential of a data problem in the industry**
 
 Pandora Box enables analysts and data scientists to discover the predictive potential of an industrial process in minutes.
 
 Pandora does quick feasibility analysis of the problems you want to predictively model in the industry (quality prediction, virtual sensors, etc).
-```
-
-O Pandora Box possibilita que analistas e cientistas de dados descubram o potencial preditivo de um processo industrial em minutos.
-
-O Pandora faz análises rápidas de viabilidade dos problemas que deseja modelar preditivamente na indústria (predição de qualidade, sensores virtuais, etc).
 
 ![IHM Pandora](/images/IHM%20Pandora02.png)
 
-O Pandora pode ser usado para analisar correlações entre variáveis de processo e qualidade (correlação linear e não linear), fazer teste de hipóteses (verificar causalidade), calcular o tempo de atraso, sincronizar as variáveis no tempo e fornecer informações sobre o potencial preditivo do problema.
+Sientia Predictive Power Evaluator (**SPPE**) can be used to analyze correlations between process variables and quality (linear and non-linear correlation), do hypothesis testing (check causality), calculate lag time, synchronize variables in time, and provide information on the predictive potential of the problem.
 
-### Por quê o Pandora?
+### Why Sientia Predictive Power Analysis?
 
-Sabe aqueles momentos em que você precisa fazer uma rápida análise de viabilidade (potencial preditivo) de um problema e não tem tempo para fazer todo aquela codificação em python ou não tem ninguém disponível pra te ajudar?
+You know those times when you need to do a quick feasibility analysis (predictive potential) of a problem and you don't have time to do all that python coding or you don't have anyone available to help you?
 
-Se você já esteve nessa situação, então o Pandora é o aplicativo perfeito para te salvar nesses momentos!
+If you've ever been in this situation, then **SPPE** is the perfect app to save you in those moments!
 
-### Entendendo o Pandora
+### How Sientia Predictive Power works
 
-Analisar se uma variável de qualidade de um processo industrial pode ser modelada preditivamente é uma tarefa complexa e que exige avaliar uma séria de informações. O Pandora facilita esse processo, fazendo todas as etapas necessárias para isso de maneira mais automática e rápida.
+Analyzing whether a quality variable of an industrial process can be predictively modeled is a complex task that requires evaluating a lot of information. **SPPE** makes this process easier, making all the necessary steps for it more automatic and faster.
 
-Claro que não reinventamos a roda. Entretanto, tornamos esse processo mais democrático e acessível para os analistas, engenheiros e tomadores de decisão na indústria, permitindo que uma análise mínima possa ser feita sobre os dados que se deseja explorar/modelar.
+Of course, we don't reinvent the wheel. However, we have made this process more democratic and accessible to analysts, engineers and decision makers in the industry, allowing a minimal analysis to be done on the data you want to explore/model.
 
-Tal análise preliminar, utilizando o Pandora Box, permite que o usuário tenha um mínimo de informação necessária a respeito do potencial preditivo do problema, facilitando a tomada de decisão sobre seguir ou não com o projeto de dados.
+Such a preliminary analysis, using **SPPE**, allows the user to have a minimum of necessary information regarding the predictive potential of the problem, facilitating the decision-making on whether or not to proceed with the data project.
 
-Pandora também disponibiliza para o usuário um dataset sincronizado e pronto para ser explorado de forma mais consistente e sistemática.
+**SPPE** also provides the user with a synchronized dataset ready to be explored more consistently and systematically.
 
-### Instalação
+### Installation
 
-1. Clone o projeto e navegue até a pasta project
+1. Clone the project and navigate to the project folder
 
 ```
-git clone https://github.com/ihmstefanini/pandorabox.git
-cd pandorabox
+git clone https://github.com/Aignosi/sientia-predictivepower-evaluation.git
+cd <project folder name>
 ```
 
-2. Rode seu ambiente virtual (nesse exemplo iremos utilizar o virtualenv)
+2. Run your virtual environment (in this example we will use virtualenv)
 
 ```
 python -m venv myenv
 ```
 
-Linux
+  Linux
 
 ```
 source myenv/bin/activate
 ```
 
-Windows
+  Windows
 
 ```
 . myenv/Scripts/activate
 ```
 
-3. Instale as dependencias
+3. Install dependencies
 
 ```
 pip install -r requirements.txt
 ```
 
-4. Rode a aplicação no terminal de comando
+4. Run the application in the command terminal
 
 ```
-streamlit run pandora_app.py
+streamlit run sppe_app.py
 ```
 
-### Utilizando o Pandora
+### Using SPPE
 
-- Um exemplo prático
+- A practical example
 
-### Credenciais de acesso
+### Access credentials
 
 - **User Name:** default
 - **Password:** 12345
 
-**Carregando os dados no Pandora**
+**Loading data into SPPE**
 
 ![IHM Pandora01-demo01](/images/Pandora-Gif01_a.gif)
 
-**Visualizando os dados e suas características básicas**
+**Visualizing the data and its basic characteristics**
 
 ![IHM Pandora01-demo02](/images/Pandora-Gif02.gif)
 
-**Visualizando e interpretando as correlações**
+**Visualizing and Interpreting Correlations**
 
 ![IHM Pandora01-demo03](/images/Pandora-Gif03.gif)
 
-### Junte-se a nossa comunidade de analistas que utilizam o Pandora
+### Join our community of analysts who use SPPE
 
-- Entre no chat do [Teams](https://teams.microsoft.com/l/team/19%3aac1d8e5b18d74945a252fae738c6c0e5%40thread.tacv2/conversations?groupId=36d4af41-3c0a-41ad-9e71-8bcb8bdc4c7d&tenantId=d8bde65a-3ded-4346-9518-670204e6e184)
+- Join us at  [Discord]()
 
-### Reportando bugs e contribuindo com o código
+### Reporting bugs and contributing code
 
-Quer reportar um bug ou solicitar uma feature? Fale com a gente no [Teams](https://teams.microsoft.com/l/team/19%3aac1d8e5b18d74945a252fae738c6c0e5%40thread.tacv2/conversations?groupId=36d4af41-3c0a-41ad-9e71-8bcb8bdc4c7d&tenantId=d8bde65a-3ded-4346-9518-670204e6e184)) ou abra um issue.
+Open an issue
 
-Quer ajudar a construir o Pandora? Em breve!
 
-### Suporte ou Contato
+### Support or contact
 
-Mande um email pra gente no inteligenciaindustrial@ihm.com.br.
+Send an e-mail to alexandre@aignosi.com
 
-### Pandorabox for teams e provisionado em cloud
+### SPPED for enterprises or cloud provisioning 
 
-Quer compartilhar suas descobertas, exportar os datasets e avaliar o potencial preditivo de um problema em larga escala?
+Want to share your findings, export datasets, and assess the predictive potential of a large-scale problem?
 
-Entre na nossa [**lista de espera do Pandorabox Cloud**](https://airtable.com/shrXwO3hOV5KK9MGH)
+enter our [**lista de espera do Pandorabox Cloud**](https://airtable.com/shrXwO3hOV5KK9MGH)
 
-### Licença
+### License
 
-Nosso aplicativo é open source sobre os termos de uso da licença GPL 3.0
+Our app is open source under the terms of use of the GPL 3.0 license
