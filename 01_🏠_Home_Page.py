@@ -28,7 +28,9 @@ def main():
 
 
     st.sidebar.title("Navigation")
-
+    
+    st.markdown("[![Aignosi](https://github.com/Aignosi/sientia-predictivepower-evaluation/blob/dev-refactoring/images/aiglogo.png)](http://aignosi.com)")
+    #st.caption("Check out this [article](https://www.linkedin.com/pulse/visualizing-non-linear-career-path-data-and-stories/?trackingId=7RX%2Bbl6LRu2jaa5BB4aC4Q%3D%3D) to learn more about the non-linear career path.")
 
     st.sidebar.header("About")
     st.sidebar.info(
