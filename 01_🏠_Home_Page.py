@@ -26,21 +26,22 @@ def main():
     
     """Main function of the App"""
 
+    with st.sidebar:
+        st.markdown("[![Aignosi](https://github.com/Aignosi/sientia-predictivepower-evaluation/blob/dev-refactoring/images/aiglogo.png)](http://aignosi.com)")
+       
+        st.sidebar.title("Navigation")
+        
+         #st.caption("Check out this [article](https://www.linkedin.com/pulse/visualizing-non-linear-career-path-data-and-stories/?trackingId=7RX%2Bbl6LRu2jaa5BB4aC4Q%3D%3D) to learn more about the non-linear career path.")
 
-    st.sidebar.title("Navigation")
-    
-    st.markdown("[![Aignosi](https://github.com/Aignosi/sientia-predictivepower-evaluation/blob/dev-refactoring/images/aiglogo.png)](http://aignosi.com)")
-    #st.caption("Check out this [article](https://www.linkedin.com/pulse/visualizing-non-linear-career-path-data-and-stories/?trackingId=7RX%2Bbl6LRu2jaa5BB4aC4Q%3D%3D) to learn more about the non-linear career path.")
-
-    st.sidebar.header("About")
-    st.sidebar.info(
-        """
-        Part of this app is maintained by Aignosi. You can learn more about us at
-        [Aignosi.com](https://aignosi.com)
-        """
-    )
-    st.sidebar.header("Contact")
-    st.sidebar.info("This is a demo version of the Sientia Predictive Power Evaluator (SPPE). For more information, contact us by email: alexandre@aignosi.com")
+        st.sidebar.header("About")
+        st.sidebar.info(
+            """
+            Part of this app is maintained by Aignosi. You can learn more about us at
+            [Aignosi.com](https://aignosi.com)
+            """
+        )
+        st.sidebar.header("Contact")
+        st.sidebar.info("This is a demo version of the Sientia Predictive Power Evaluator (SPPE). For more information, contact us by email: alexandre@aignosi.com")
 
 
     # ===========================================
