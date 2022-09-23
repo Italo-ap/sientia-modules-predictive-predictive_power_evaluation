@@ -1,5 +1,5 @@
 
-# Welcom to Sientia Predictive Power Evaluator 👋
+# Welcome to Sientia Predictive Power Evaluator 👋
 
 **The fastest way to assess the predictive potential of a data problem in the industry**
 
