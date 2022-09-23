@@ -27,7 +27,7 @@ def main():
     """Main function of the App"""
 
     with st.sidebar:
-        st.markdown("[![Aignosi](https://github.com/Aignosi/sientia-predictivepower-evaluation/blob/dev-refactoring/images/aiglogo.png)](http://aignosi.com)")
+        #st.markdown("[![Aignosi](https://github.com/Aignosi/sientia-predictivepower-evaluation/blob/dev-refactoring/images/aiglogo.png)](http://aignosi.com)")
        
         st.sidebar.title("Navigation")
         
