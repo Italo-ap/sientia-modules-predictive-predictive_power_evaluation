@@ -85,7 +85,7 @@ def main():
     
     st.markdown('')
     st.subheader("**Let's try it?**")
-    st.markdown("In the navigation bar on the left, select **Data Preparation**")
+    st.markdown("In the navigation bar on the left, select **Data Load**")
     st.markdown('')
     st.markdown('')
 
