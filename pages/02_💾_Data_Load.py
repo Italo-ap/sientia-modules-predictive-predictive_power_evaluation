@@ -41,7 +41,7 @@ st.info(
 )
 
 st.subheader(
-    "Before selecting the file that will be uploaded, select the format used to generate your CSv file.")
+    "Before selecting the file that will be uploaded, select the formats used to generate your CSV Sfile.")
 
 # User specification for the csv file format
 separator_format = st.selectbox("Choose the Separator format used in your CSV file",(";", ","))
@@ -59,5 +59,9 @@ if uploaded_file:
     df = getDataFromCSV(uploaded_file, separator_format, decimal_format).copy()
 
     data_load_state.text("Great! Data loaded successfully!")
+    
+    # Display data frame
+    st.dataframe(df)
+
     st.markdown(
         "Para continuar, navegue pela aba **lateral esquerda** e selecione as opções.")
