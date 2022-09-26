@@ -26,8 +26,8 @@ st.set_page_config(
 ##########################
 # Início da página Data Preparation
 st.title('Loading and preparing data!')
-st.markdown(
-    "The first step is to import the **.csv** file that contains the data you want to analyze.")
+st.subheader(
+    "The first step towards data analysis is import the **.csv** file that contains the data.")
 
 st.info(
     """
@@ -40,8 +40,12 @@ st.info(
     """
 )
 
+st.subheader(
+    "Before selecting the file that will be uploaded, select the format used to generate your CSv file.")
+
 # User specification for the csv file format
-st.selectbox("Choose the Separator format used in your CSV file",(";", ","))
+separator_format = st.selectbox("Choose the Separator format used in your CSV file",(";", ","))
+decimal_format = st.selectbox("Choose the Decimal separator format used in your CSV file",(".", ","))
 
 uploaded_file = st.file_uploader(
     "Upload your csv file here",
