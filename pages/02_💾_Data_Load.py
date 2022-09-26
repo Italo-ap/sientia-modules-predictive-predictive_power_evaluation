@@ -5,7 +5,7 @@ import datetime
 import pandas as pd
 
 # special imports
-
+from utils import *
 
 # front-end imports
 import streamlit as st
@@ -20,23 +20,6 @@ st.set_page_config(
     page_icon='💾',  # String, anything supported by st.image, or None.
 )
 
-# ===========================================
-# Functions Data Retrieval
-# ===========================================
-
-
-@st.cache(allow_output_mutation=True)
-def getDataFromCSV(file) -> pd.DataFrame:
-    dataFrame = pd.read_csv(file, sep=",", decimal=".",
-                            encoding="UTF-8",
-                            index_col=0,
-                            low_memory=False)
-
-    dataFrame.index = pd.to_datetime(
-        dataFrame.index, format='%Y-%m-%d %H:%M:%S')
-    dataFrame = dataFrame.sort_index(ascending=True)
-    dataFrame = dataFrame.apply(pd.to_numeric, errors='coerce')
-    return dataFrame
 
 ##########################
 ### App page beginning ###
@@ -48,14 +31,17 @@ st.markdown(
 
 st.info(
     """
-    Attention to the **standard formatting** of the **.csv file**:
-        \n* Delimiter = ","
-        \n* Decimal = "."
+    **Attention** to the **standard formatting** of the **.csv file**:
+        \n* Delimiter = "," or ";"
+        \n* Decimal = "." or ","
         \n* Encoding = "UTF-8"
         \n* Datetime = "%Y-%m-%d %H:%M:%S"
         \n* Variable "Time" or "Time Stamp" as column 0 of the dataframe         
     """
 )
+
+# User specification for the csv file format
+st.selectbox("Choose the Separator format used in your CSV file",(";", ","))
 
 uploaded_file = st.file_uploader(
     "Upload your csv file here",
@@ -66,7 +52,7 @@ if uploaded_file:
 
     data_load_state = st.text('Loading data...')
 
-    df = getDataFromCSV(uploaded_file).copy()
+    df = getDataFromCSV(uploaded_file, separator_format, decimal_format).copy()
 
     data_load_state.text("Great! Data loaded successfully!")
     st.markdown(
