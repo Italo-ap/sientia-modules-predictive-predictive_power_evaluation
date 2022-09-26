@@ -1,10 +1,11 @@
 import streamlit as st
 import pandas as pd
-
+import datetime
 
 # ===========================================
 # Functions Data Retrieval
 # ===========================================
+
 
 @st.cache(allow_output_mutation=True)
 def getDataFromCSV(file, separator_format: str, decimal_format: str) -> pd.DataFrame:
@@ -23,9 +24,18 @@ def getDataFromCSV(file, separator_format: str, decimal_format: str) -> pd.DataF
                             index_col=0,
                             low_memory=False)
 
+    date_string = dataFrame.index
+    format = "%Y-%m-%d %H:%M:%S"
+
+    try:
+        datetime.datetime.strptime(date_string, format)
+        print("Using the correct date string format.")
+    except ValueError:
+        print("This is the incorrect date string format. It should be %Y-%m-%d %H:%M:%S")
+
     dataFrame.index = pd.to_datetime(
         dataFrame.index, format='%Y-%m-%d %H:%M:%S')
     dataFrame = dataFrame.sort_index(ascending=True)
     dataFrame = dataFrame.apply(pd.to_numeric, errors='coerce')
-    
+
     return dataFrame
