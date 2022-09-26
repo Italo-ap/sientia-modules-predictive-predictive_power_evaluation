@@ -29,15 +29,16 @@ def main():
     with st.sidebar:
         #st.markdown("[![Aignosi](https://github.com/Aignosi/sientia-predictivepower-evaluation/blob/dev-refactoring/images/aiglogo.png)](http://aignosi.com)")
        
-        st.sidebar.title("Navigation")
+        #st.sidebar.title("Navigation")
         
          #st.caption("Check out this [article](https://www.linkedin.com/pulse/visualizing-non-linear-career-path-data-and-stories/?trackingId=7RX%2Bbl6LRu2jaa5BB4aC4Q%3D%3D) to learn more about the non-linear career path.")
 
         st.sidebar.header("About")
         st.sidebar.info(
             """
-            Part of this app is maintained by Aignosi. You can learn more about us at
-            [Aignosi.com](https://aignosi.com)
+            This forked version of the [original app](https://github.com/ihmstefanini/pandorabox) is maintained by Aignosi. You can learn more about us at
+            [Aignosi.com](https://aignosi.com).
+            
             """
         )
         st.sidebar.header("Contact")
@@ -61,7 +62,7 @@ def main():
     st.markdown(' ')
     #st.image(image, caption='Arquitetura',use_column_width=True)
     st.subheader('**Why SPPE?**')
-    st.markdown('If you need to predict a process or quality variable and you do nott know if it iss feasible to make a predictive model for it, then Pandora Box is the right app to answer that question.')
+    st.markdown('If you need to predict a process or quality variable and you do not know if it iss feasible to make a predictive model for it, then Pandora Box is the right app to answer that question.')
     st.markdown('')   
     st.subheader('**What are the benefits of SPPE?**')
     st.markdown('''
