@@ -64,4 +64,4 @@ if uploaded_file:
     st.dataframe(df)
 
     st.markdown(
-        "Para continuar, navegue pela aba **lateral esquerda** e selecione as opções.")
+        "To continue with your journey, go to the following page: **Data Preparation**.")
