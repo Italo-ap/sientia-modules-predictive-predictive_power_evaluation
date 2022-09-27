@@ -3,8 +3,32 @@ import pandas as pd
 import datetime
 
 # ===========================================
-# Functions Data Retrieval
+# Functions of Sanity Check
 # ===========================================
+
+
+def validate_datetime_index_lastvalue(last_index_value: datetime) -> bool:
+    """
+        ## Summary
+            Check if .
+        Args:
+            data_string value of datetime
+            format -> desired format(s)
+
+        Returns:
+            (bool): A bool value of True if datetime string is supported.
+    """
+    
+    try:
+        if str(last_index_value) != 'NaT':
+            endTimeDf = last_index_value
+            correct_last_value_csvfile = True
+            print("There is no bug with the last value of the csv file.")
+    except ValueError:
+        raise ValueError(
+            "There must exist a non time date value in thes last row of your csv file")
+
+    return last_index_value
 
 
 def validate_datetime(date_string, format: str) -> bool:
@@ -14,7 +38,7 @@ def validate_datetime(date_string, format: str) -> bool:
         Args:
             data_string value of datetime
             format -> desired format(s)
-            
+
         Returns:
             (bool): A bool value of True if datetime string is supported.
     """
@@ -27,6 +51,10 @@ def validate_datetime(date_string, format: str) -> bool:
             "This is the incorrect date string format. It should be %Y-%m-%d %H:%M:%S")
 
     return correct_format
+
+# ===========================================
+# Functions of Data Retrieval
+# ===========================================
 
 
 @st.cache(allow_output_mutation=True)
@@ -49,7 +77,7 @@ def getDataFromCSV(file, separator_format: str, decimal_format: str) -> pd.DataF
     date_string = dataFrame.index[0]
     print(date_string)
     print(type(date_string))
-    format = "%Y-%m-%d %H:%M"
+    format = "%Y-%m-%d %H:%M:%S"
     correct_format = validate_datetime(date_string, format)
 
     if correct_format:
