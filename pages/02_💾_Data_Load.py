@@ -24,8 +24,8 @@ st.set_page_config(
 ##########################
 ### App page beginning ###
 ##########################
-# Início da página Data Preparation
-st.title('Loading and preparing data!')
+
+st.title('Data Loading')
 st.subheader(
     "The first step towards data analysis is import the **.csv** file that contains the data.")
 
@@ -44,8 +44,10 @@ st.subheader(
     "Before selecting the file that will be uploaded, select the formats used to generate your CSV Sfile.")
 
 # User specification for the csv file format
-separator_format = st.selectbox("Choose the Separator format used in your CSV file",(";", ","))
-decimal_format = st.selectbox("Choose the Decimal separator format used in your CSV file",(".", ","))
+separator_format = st.selectbox(
+    "Choose the Separator format used in your CSV file", (";", ","))
+decimal_format = st.selectbox(
+    "Choose the Decimal separator format used in your CSV file", (".", ","))
 
 uploaded_file = st.file_uploader(
     "Upload your csv file here",
@@ -56,9 +58,14 @@ if uploaded_file:
 
     data_load_state = st.text('Loading data...')
 
-    df = getDataFromCSV(uploaded_file, separator_format, decimal_format).copy()
-
+    df = getDataFromCSV(uploaded_file, separator_format, decimal_format)
+    df.copy()
     data_load_state.text("Great! Data loaded successfully!")
+    
+    # Caching data
+    if "df" not in st.session_state:
+        st.session_state.df = df
+
     
     # Display data frame
     st.dataframe(df)

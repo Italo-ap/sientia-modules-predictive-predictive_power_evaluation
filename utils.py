@@ -7,6 +7,28 @@ import datetime
 # ===========================================
 
 
+def validate_datetime(date_string, format: str) -> bool:
+    """
+        ## Summary
+            Check if datetime string format is supported and return True if is the correct format.
+        Args:
+            data_string value of datetime
+            format -> desired format(s)
+            
+        Returns:
+            (bool): A bool value of True if datetime string is supported.
+    """
+    try:
+        datetime.datetime.strptime(date_string, format)
+        print("Using the correct date string format.")
+        correct_format = True
+    except ValueError:
+        raise ValueError(
+            "This is the incorrect date string format. It should be %Y-%m-%d %H:%M:%S")
+
+    return correct_format
+
+
 @st.cache(allow_output_mutation=True)
 def getDataFromCSV(file, separator_format: str, decimal_format: str) -> pd.DataFrame:
     """
@@ -24,15 +46,13 @@ def getDataFromCSV(file, separator_format: str, decimal_format: str) -> pd.DataF
                             index_col=0,
                             low_memory=False)
 
-    date_string = dataFrame.index
-    format = "%Y-%m-%d %H:%M:%S"
+    date_string = dataFrame.index[0]
+    print(date_string)
+    print(type(date_string))
+    format = "%Y-%m-%d %H:%M"
+    correct_format = validate_datetime(date_string, format)
 
-    if dataFrame is not None:
-        try:
-            datetime.datetime.strptime(date_string, format)
-            print("Using the correct date string format.")
-        except ValueError:
-            print("This is the incorrect date string format. It should be %Y-%m-%d %H:%M:%S")
+    if correct_format:
 
         dataFrame.index = pd.to_datetime(
             dataFrame.index, format='%Y-%m-%d %H:%M:%S')
