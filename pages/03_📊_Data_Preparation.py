@@ -41,7 +41,7 @@ if "dftidy" not in st.session_state:
 ### App page beginning ###
 ##########################
 st.title('Data Selection and Preparation')
-st.subheader("Now it is time to select and prepare your data, like filtering, cleaning and transforming.")
+st.subheader("Now it is time  to select and prepare your data, like filtering, cleaning and transforming.")
 
 st.markdown("#### First of all go to the navigation page on your left and follow through Steps 1 and 2.")
 
