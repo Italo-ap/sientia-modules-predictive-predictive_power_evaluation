@@ -3,6 +3,7 @@
 # common imports
 import numpy as np
 import pandas as pd
+from rich import print as rprint
 from PIL import Image
 image1 = Image.open('images/sppe_workflow_overview.png')
 image2 = Image.open('images/aiglogo.png')

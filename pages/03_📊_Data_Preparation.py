@@ -16,7 +16,11 @@ from statsmodels.tsa.seasonal import seasonal_decompose
 import streamlit as st
 
 #custom imports
-from utils import validate_datetime_index_lastvalue
+from helper_functions import validate_datetime_index_lastvalue
+
+# ===========================================
+# Setup
+# ===========================================
 
 st.set_page_config(
     # Can be "centered" or "wide". In the future also "dashboard", etc.
@@ -34,8 +38,15 @@ dfraw = pd.DataFrame.from_dict(st.session_state.df)
 
 # Initializing dfCleaned DataFrame
 dfCleaned = pd.DataFrame()
+# Caching it as dftidy
 if "dftidy" not in st.session_state:
     st.session_state.dftidy = dfCleaned
+
+# Initializing fltTags
+fltTags = []
+# Caching it as filteredTags
+if "fltTags" not in st.session_state:
+    st.session_state.filteredTags = fltTags
 
 ##########################
 ### App page beginning ###
@@ -59,6 +70,7 @@ if not dfraw.empty:
         options=dfTags,
         # default=fltTags,
         key='fltTagsPreparation')
+    st.session_state.filteredTags = fltTags
 
     if len(fltTags) > 10:
         expanderFltTags.warning(
@@ -72,13 +84,11 @@ if not dfraw.empty:
 
     startTimeDf = dfraw.index[0]
     
-    # Checking if last index value of csv file is correct]
+    # Checking if last index value of csv file is correct
     # Funcition and functionality should be further investigated and deploy to avoid future bugs regarding 'NaT' value in the last row of the CSV file
     last_index_value = validate_datetime_index_lastvalue(dfraw.index[-1])
     
     endTimeDf = dfraw.index[-1]
-
-
 
     fltDateStart = expanderFltDate.date_input(
         label='Initial date:',

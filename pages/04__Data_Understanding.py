@@ -9,11 +9,18 @@ from rich import print as rprint
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+import pandas_profiling
 
 from statsmodels.tsa.seasonal import seasonal_decompose
 
 # front-end imports
 import streamlit as st
+from streamlit_pandas_profiling import st_profile_report
+
+# ===========================================
+# Setup
+# ===========================================
+
 st.set_page_config(
     # Can be "centered" or "wide". In the future also "dashboard", etc.
     layout="centered",
@@ -26,6 +33,9 @@ st.set_page_config(
 # ===========================================
 # Functions of Data caching
 # ===========================================
+dfRawRange = st.session_state.dftidy
+fltTags = st.session_state.filteredTags
+
 
 ##########################
 ### App page beginning ###
@@ -33,9 +43,9 @@ st.set_page_config(
 st.title('Data Understanding - UNDER CONSTRUCTION')
 st.subheader("Now it is time to select and prepare your data, like filtering, cleaning and transforming.")
 
-################
-### Describe ###
-################
+#####################
+### Describe data ###
+#####################
 
 showDescribe = st.checkbox(
     label='Mostrar estatística descritiva', value=False, key='showDescribe')
@@ -50,6 +60,7 @@ showInfoVar = st.checkbox(
     label="Análisar graficamente cada variável (tendência, sazonalidade, histogram e boxplot",
     value=False,
     key='showInfoVar')
+
 # Lógica IF para fazer aparecer a tendencia e sazonalidade quando a variável não possuir
 # valores nulos. Caso tenha valores nulos é plotado apenas a variavel
 if (showInfoVar):
@@ -149,3 +160,9 @@ if (showInfoVar):
     figHist = px.histogram(
         dfRawRange, x=fltPlot, marginal="box")
     st.plotly_chart(figHist)
+
+# Pandas Profiling report generation
+#pr = dfRawRange .profile_report()
+#st.title("Pandas Profiling in Streamlit")
+#st.write(dfRawRange )
+#st_profile_report(pr)
