@@ -1,9 +1,8 @@
-from socketserver import ForkingUDPServer
+# %%
 import pandas as pd
 import matplotlib.pyplot as plt
+from timeseries_functions import *
 # -------------------------------
-df = pd.read_csv("MiningProcess_Flotation_Plant_Database.csv",
-                 low_memory=False, decimal=",", parse_dates=["date"], infer_datetime_format=True)
 
 
 def datacleaning(df):
@@ -41,15 +40,47 @@ def datacleaning(df):
     return df
 
 
+# %%
+df = pd.read_csv("MiningProcess_Flotation_Plant_Database.csv",
+                 low_memory=False, decimal=",", parse_dates=["date"], infer_datetime_format=True)
+
+
+# %%
 dftidy = datacleaning(df)
 print(type(dftidy))
-
 plt.plot(dftidy.iloc[:, 1])
 
-
+# %%
 # We downsample from hourly to 3 day frequency aggregated using mean
 dfresampled = df.resample('2h').mean()
-print(dfresampled.head(5))
-# plt.figure()
 plt.plot(dfresampled.index, dfresampled.iloc[:, 0])
 plt.show()
+
+# %%
+dfnostatic = remove_static_windows(df, threshold=5)
+# %%
+plt.plot(dfnostatic.index, dfnostatic.iloc[:, 1])
+plt.show()
+
+
+# %%
+columns_list= ['% Iron Feed', '% Silica Feed', 'Starch Flow', 'Amina Flow',
+       'Ore Pulp Flow', 'Ore Pulp pH', 'Ore Pulp Density',
+       'Flotation Column 01 Air Flow', 'Flotation Column 02 Air Flow',
+       'Flotation Column 03 Air Flow', 'Flotation Column 04 Air Flow',
+       'Flotation Column 05 Air Flow', 'Flotation Column 06 Air Flow',
+       'Flotation Column 07 Air Flow', 'Flotation Column 01 Level',
+       'Flotation Column 02 Level', 'Flotation Column 03 Level',
+       'Flotation Column 04 Level', 'Flotation Column 05 Level',
+       'Flotation Column 06 Level', 'Flotation Column 07 Level',
+       '% Iron Concentrate', '% Silica Concentrate']
+# %%
+dftidy, mixed_types = mixed_data_cols_rm_str(df[columns_list], inplace=False, return_types=True)
+
+# %%
+plt.plot(dftidy.index, dftidy.iloc[:, 0])
+plt.show()
+print(mixed_types)
+# %%
+
+# %%
