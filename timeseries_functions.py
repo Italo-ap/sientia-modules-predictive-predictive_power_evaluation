@@ -6,7 +6,7 @@ import datetime
 import numpy as np
 import gc
 from sklearn.preprocessing import MinMaxScaler
-
+import logging
 # ===========================================
 # Functions of Data Cleaning and Transformation
 # ===========================================
@@ -737,6 +737,7 @@ def local_global_test(series, stat_func, window_length, stride):
 
     return {'global': global_stat, 'locals': local_stats}
 
+
 def check_str(cell) -> bool:
     """
     Function that checks if a given input is a string that cannot be
@@ -762,6 +763,7 @@ def check_str(cell) -> bool:
     else:
         return False
 
+
 def mixed_data_cols_rm_str(dataframe: pd.DataFrame, inplace: bool = False,
                            main_type: str = 'float64',
                            return_types: bool = False
@@ -783,7 +785,7 @@ def mixed_data_cols_rm_str(dataframe: pd.DataFrame, inplace: bool = False,
 
         pd.DataFrame: the data with string rows removed, if inplace is False.
     """
-
+    logging.info("Starting Function Run: Mixed Data Columns Types Remove")
     if inplace:
         df = dataframe
     else:
@@ -791,10 +793,15 @@ def mixed_data_cols_rm_str(dataframe: pd.DataFrame, inplace: bool = False,
     mixed_types = []
     mixed_type_cols = [i for i, col in enumerate(df.dtypes)
                        if col != main_type]
+    if not mixed_type_cols:
+        logging.info("There are no mixed column types")
     if mixed_type_cols:
+        logging.warning("There are mixed column types")
         df_mixed = df.iloc[:, mixed_type_cols]
         if return_types:
             mixed_types = df_mixed.applymap(type).apply(pd.unique)
+            logging.warning("Mixed column(s) name(s): %s and type(s): %s",
+                            mixed_types.columns, mixed_types.values)
         str_mask = df_mixed.applymap(check_str)
         # If you want to drop rows with strings
         rows_with_str = str_mask.any(axis=1)

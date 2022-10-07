@@ -3,8 +3,8 @@ from typing import Union
 import datetime
 import gc
 import time
-import datatable as dt
 from rich import print as rprint
+
 
 def check_str(cell) -> bool:
     """
@@ -79,43 +79,6 @@ def mixed_data_cols_rm_str(dataframe: pd.DataFrame, inplace: bool = False,
         dataframe = df
         return None
 
-def load_data(path: str, test_th: str = '', batch_path: str = '',
-              return_test: bool = False):
-    '''
-        Load the data to a dataframe and select the timestamp as datetime type
-        index. Batch data is provided in a different file, which is also loaded
-        and merged in the returned dataframe.
-
-        Args:
-            path (str): path to the main csv file, with the timestamp as its
-                        first column.
-            test_th (str): timestamp that divides train and test sets. All data
-                           collected after this time will be discarded.
-            batch_path (str): path to the batch data csv file, with the
-                              timestamp as its first column.
-        Returns:
-            full_dataset (pd.DataFrame): dataframe with both the process and
-                                        batch measurements.
-    '''
-
-    full_dataset = dt.fread(path)
-    full_dataset.key = 'Timestamp'
-    full_dataset = full_dataset.to_pandas()
-
-    full_dataset.index = pd.to_datetime(full_dataset.index,
-                                        format='%Y/%m/%d %H:%M:%S')
-    full_dataset = full_dataset.sort_index(ascending=True)
-    # Data was collected in UTC, we convert it to UTC-3
-    full_dataset.index = full_dataset.index - datetime.timedelta(hours=3)
-    #full_dataset = add_batch_data(batch_path, full_dataset)
-    if test_th:
-        test_dataset = full_dataset.loc[pd.to_datetime(test_th):]
-        full_dataset = full_dataset.loc[:pd.to_datetime(test_th)]
-    if return_test:
-        return full_dataset, test_dataset
-    else:
-        return full_dataset
-
 
 def get_target_and_inputs(full_dataset: pd.DataFrame, target: str):
     '''
@@ -151,8 +114,10 @@ def get_target_and_inputs(full_dataset: pd.DataFrame, target: str):
 
 def shutdown_mask(inputs_dataset: pd.DataFrame):
 
-    mask = ((inputs_dataset['FIT0413_610__PT__VAL_PV_OUT'] > 0.0) | (
-        inputs_dataset['FIT0413_008__PT__VAL_PV_OUT'] > 0.0)) & \
-        (inputs_dataset['DIT0413_003B__PT__VAL_PV_OUT'] >= 1.3)
+    mask = ((inputs_dataset['Ore Pulp Flow'] == 0.0) | (
+        inputs_dataset['Ore Pulp Density'] <= 1.0))
 
     return mask
+
+def fake_flot_df():
+    df = []
